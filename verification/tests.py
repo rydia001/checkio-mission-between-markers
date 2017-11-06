@@ -11,26 +11,40 @@ Each test is dict with
 TESTS = {
     "Basics": [
         {
-            "input": [3, 2],
-            "answer": 5,
-            "explanation": "3+2=?"
+            "input": ['What is >apple<', '>', '<'],
+            "answer": 'apple'
         },
         {
-            "input": [5, 7],
-            "answer": 12,
-            "explanation": "5+7=?"
+            "input": ["<head><title>My new site</title></head>",
+                      "<title>", "</title>"],
+            "answer": "My new site",
+            "explanation": "markers can be longer than one symbol"
+        },
+        {
+            "input": ['No[/b] hi', '[b]', '[/b]'],
+            "answer": 'No',
+            "explanation": "No beginning marker "
+        },
+        {
+            "input": ['No [b]hi', '[b]', '[/b]'],
+            "answer": 'hi',
+            "explanation": "No ending marker"
+        },
+        {
+            "input": ['No hi', '[b]', '[/b]'],
+            "answer": 'No hi',
+            "explanation": "No markers at all"
+        },
+        {
+            "input": ['No <hi>', '>', '<'],
+            "answer": '',
+            "explanation": "Wrong direction"
         }
     ],
     "Extra": [
         {
-            "input": [6, 3],
-            "answer": 9,
-            "explanation": "6+3=?"
-        },
-        {
-            "input": [6, 7],
-            "answer": 13,
-            "explanation": "6+7=?"
+            "input": ["Never send a human to do a machine's job.", "Never", "do"],
+            "answer": " send a human to "
         }
     ]
 }
