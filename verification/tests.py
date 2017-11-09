@@ -1,10 +1,10 @@
 """
-TESTS is a dict with all you tests.
-Keys for this will be categories' names.
-Each test is dict with
-    "input" -- input data for user function
+TESTS is a dict with all your tests.
+Keys for this will be the categories' names.
+Each test is a dict with
+    "input" -- input data for a user function
     "answer" -- your right answer
-    "explanation" -- not necessary key, it's using for additional info in animation.
+    "explanation" -- not necessarily a key, it's used for additional info in animation.
 """
 
 
@@ -23,7 +23,7 @@ TESTS = {
         {
             "input": ['No[/b] hi', '[b]', '[/b]'],
             "answer": 'No',
-            "explanation": "No beginning marker "
+            "explanation": "No beginning marker"
         },
         {
             "input": ['No [b]hi', '[b]', '[/b]'],
@@ -44,7 +44,7 @@ TESTS = {
     "Extra": [
         {
             "input": ["Never send a human to do a machine's job.", "Never", "do"],
-            "answer": " send a human to "
+            "answer": "send a human to"
         }
     ]
 }
