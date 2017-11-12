@@ -26,11 +26,11 @@
     </p>
 
 {% if interpreter.slug == "js-node" %}
-<pre class="brush: javascript">betweenMarkers('What is >apple<', '>', '<') == 'apples'
+<pre class="brush: javascript">betweenMarkers('What is >apple<', '>', '<') == 'apple'
 betweenMarkers('No[/b] hi', '[b]', '[/b]') == 'No'
 </pre>
 {% else %}
-<pre class="brush: python">between_markers('What is >apple<', '>', '<') == 'apples'
+<pre class="brush: python">between_markers('What is >apple<', '>', '<') == 'apple'
 between_markers('No[/b] hi', '[b]', '[/b]') == 'No'
 </pre>
 {% endif %}

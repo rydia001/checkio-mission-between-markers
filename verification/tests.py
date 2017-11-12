@@ -44,7 +44,7 @@ TESTS = {
     "Extra": [
         {
             "input": ["Never send a human to do a machine's job.", "Never", "do"],
-            "answer": "send a human to"
+            "answer": " send a human to "
         }
     ]
 }
