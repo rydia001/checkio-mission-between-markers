@@ -45,6 +45,11 @@ TESTS = {
         {
             "input": ["Never send a human to do a machine's job.", "Never", "do"],
             "answer": " send a human to "
+        },
+        {
+            "input": ['No <hi> one', '>', '<'],
+            "answer": '',
+            "explanation": "Wrong direction2"
         }
     ]
 }
