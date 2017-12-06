@@ -4,7 +4,6 @@
 
 <ul>
 	<li>The initial and final markers are always different.</li>
-	<li>The text must be found only between the first instances of the marker.</li>
 	<li>If there is no initial marker then the beginning should be considered as the beginning of a string.</li>
 	<li>If there is no final marker then the ending should be considered as the ending of a string.</li>
     <li>If the initial and final markers are missing then simply return the whole string.</li>
@@ -44,5 +43,5 @@ between_markers('No[/b] hi', '[b]', '[/b]') == 'No'
 
 <p>
     <strong>Precondition:</strong>
-    <i>can't be more than one final marker and can't be more tan one initial</i>
+    <i>can't be more than one final marker and can't be more than one initial</i>
 </p>
