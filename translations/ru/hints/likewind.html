@@ -22,7 +22,45 @@
 
 <div class="question-answer">
     <div class="question">
-        Вы могли бы показать, как этим пользоваться, на примере левого маркера?
+        Вы могли бы привести пример кода?
+    </div>
+    <div class="answer">
+        Конечно.
+        <pre class="brush: python">
+def between_markers(text: str, begin: str, end: str) -> str:
+    begin_index = text.find(begin) + len(begin)
+    end_index = text.find(end)</pre>
+    </div>
+</div>    
+
+<div class="question-answer">
+    <div class="question">
+        Как получить текст, находящийся между маркерами?
+    </div>
+    <div class="answer">
+        Используя срез (slice):
+        <pre class="brush: python">        
+def between_markers(text: str, begin: str, end: str) -> str:
+    begin_index = text.find(begin) + len(begin)
+    end_index = text.find(end)
+    answer = text[begin_index:end_index]</pre>
+    </div>
+</div>
+    
+<div class="question-answer">
+    <div class="question">
+        Что делать, если какого-то маркера нет в строке?
+    </div>
+    <div class="answer">
+        Тогда вам необходимо начать отсчет с 0-й позиции (если нет левого маркера - begin) или закончить последним символом
+        исходного текста (если нет правого маркера - end). В случае, если в исходной строке нет ни одного из маркеров - 
+        вы должны вернуть в качестве ответа всю строку.
+    </div>
+</div>
+    
+<div class="question-answer">
+    <div class="question">
+        Вы могли бы объяснить это подробнее на примере левого маркера?
     </div>
     <div class="answer">
         Конечно.
@@ -50,17 +88,6 @@ if end in text:
     end_index = text.find(end)
 else:
     end_index = len(text)</pre>
-    </div>
-</div>
-
-<div class="question-answer">
-    <div class="question">
-        Как получить текст, находящийся между маркерами?
-    </div>
-    <div class="answer">
-        Используя срез (slice):
-        <pre class="brush: python">        
-answer = text[begin_index:end_index]</pre>
     </div>
 </div>
 
