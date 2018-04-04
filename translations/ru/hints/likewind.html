@@ -1,0 +1,80 @@
+<body data-author="likewind">
+
+<div class="question-answer">
+    <div class="question">
+        Я не знаю, с какой стороны подступиться к этой задаче.
+    </div>
+    <div class="answer">
+        Вам нужно найти индекс левого ограничивающего маркера (если он есть), правого (опять же - если он есть в строке)
+        и вернуть текст, находящийся между ними.
+    </div>
+</div>
+
+<div class="question-answer">
+    <div class="question">
+        Как мне найти индексы этих маркеров?
+    </div>
+    <div class="answer">
+        Используйте метод
+        <a href='https://docs.python.org/3/library/stdtypes.html?highlight=str%20find#str.find'>str.find()</a>
+    </div>
+</div>
+
+<div class="question-answer">
+    <div class="question">
+        Вы могли бы показать, как этим пользоваться, на примере левого маркера?
+    </div>
+    <div class="answer">
+        Конечно.
+        <pre class="brush: python">
+def between_markers(text: str, begin: str, end: str) -> str:
+    if begin in text:
+        begin_index = text.find(begin) + len(begin)
+    else:
+        begin_index = 0</pre>
+        Сперва мы проверяем, есть ли левый маркер в тексте. Если его там нет - то ответ будет начинаться с самого начала 
+        исходной строки. Если он там есть, то ответ будет начинаться с символа, следующего за последним символом маркера.
+        Именно поэтому в коде к позиции самого маркера - 'text.find(begin)', добавляется еще и его длина - '+ len(begin)'.
+        Это сделано на случай, если маркер состоит более чем из 1 символа.
+    </div>
+</div>
+
+<div class="question-answer">
+    <div class="question">
+        А что делать с правым маркером?
+    </div>
+    <div class="answer">
+        Ситуация аналогичная, только в случае, если правого маркера нет в исходном тексте - за конец строки мы принимаем
+        конец исходного текста. Вот так:
+        <pre class="brush: python">
+if end in text:
+    end_index = text.find(end)
+else:
+    end_index = len(text)</pre>
+    </div>
+</div>
+
+<div class="question-answer">
+    <div class="question">
+        Как объединить это вместе?
+    </div>
+    <div class="answer">
+        Полный код может выглядеть так:
+        <pre class="brush: python">
+def between_markers(text: str, begin: str, end: str) -> str:
+    if begin in text:
+        begin_index = text.find(begin) + len(begin)
+    else:
+        begin_index = 0
+    
+    if end in text:
+        end_index = text.find(end)
+    else:
+        end_index = len(text)
+        
+    return text[begin_index:end_index]</pre>
+    </div>
+</div>
+
+
+</body>
