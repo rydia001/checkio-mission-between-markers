@@ -35,7 +35,6 @@ def between_markers(text: str, begin: str, end: str) -> str:
         Сперва мы проверяем, есть ли левый маркер в тексте. Если его там нет - то ответ будет начинаться с самого начала 
         исходной строки. Если он там есть, то ответ будет начинаться с символа, следующего за последним символом маркера.
         Именно поэтому в коде к позиции самого маркера - 'text.find(begin)', добавляется еще и его длина - '+ len(begin)'.
-        Это сделано на случай, если маркер состоит более чем из 1 символа.
     </div>
 </div>
 
@@ -51,6 +50,17 @@ if end in text:
     end_index = text.find(end)
 else:
     end_index = len(text)</pre>
+    </div>
+</div>
+
+<div class="question-answer">
+    <div class="question">
+        Как получить текст, находящийся между маркерами?
+    </div>
+    <div class="answer">
+        Используя срез (slice):
+        <pre class="brush: python">        
+answer = text[begin_index:end_index]</pre>
     </div>
 </div>
 
@@ -75,6 +85,5 @@ def between_markers(text: str, begin: str, end: str) -> str:
     return text[begin_index:end_index]</pre>
     </div>
 </div>
-
-
+    
 </body>
