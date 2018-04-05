@@ -15,8 +15,8 @@
         Как мне найти индексы этих маркеров?
     </div>
     <div class="answer">
-        Используйте метод
-        <a href='https://docs.python.org/3/library/stdtypes.html?highlight=str%20find#str.find'>str.find()</a>
+        Используйте 
+        <a href='https://docs.python.org/3/library/stdtypes.html#str.find'>метод str.find()</a>
     </div>
 </div>
 
@@ -25,11 +25,13 @@
         Вы могли бы привести пример кода?
     </div>
     <div class="answer">
-        Конечно.
+        Конечно. Но сперва, обратите внимание, что с помощью 'find' вы найдете индекс первого символа маркера.
+        Для того, чтобы узнать индекс первого символа самого текста между маркерами, необходимо добавить длину левого маркера.
         <pre class="brush: python">
 def between_markers(text: str, begin: str, end: str) -> str:
     begin_index = text.find(begin) + len(begin)
     end_index = text.find(end)</pre>
+        
     </div>
 </div>    
 
@@ -43,7 +45,11 @@ def between_markers(text: str, begin: str, end: str) -> str:
 def between_markers(text: str, begin: str, end: str) -> str:
     begin_index = text.find(begin) + len(begin)
     end_index = text.find(end)
-    answer = text[begin_index:end_index]</pre>
+    return text[begin_index:end_index]</pre>
+        begin_index - индекс первого символа текста между маркерами. end_index - индекс первого символа правого маркера.
+        Так как при срезе символ, стоящий на позиции end_index не включается в результат - мы получаем нужный нам текст.
+        Другими словами, последний символ, который фактически входит в наш ответ - символ на позиции 'end_index - 1', что 
+        как раз является последним символом текста между маркерами.
     </div>
 </div>
     
@@ -72,7 +78,6 @@ def between_markers(text: str, begin: str, end: str) -> str:
         begin_index = 0</pre>
         Сперва мы проверяем, есть ли левый маркер в тексте. Если его там нет - то ответ будет начинаться с самого начала 
         исходной строки. Если он там есть, то ответ будет начинаться с символа, следующего за последним символом маркера.
-        Именно поэтому в коде к позиции самого маркера - 'text.find(begin)', добавляется еще и его длина - '+ len(begin)'.
     </div>
 </div>
 
