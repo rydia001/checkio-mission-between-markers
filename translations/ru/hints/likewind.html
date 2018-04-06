@@ -65,7 +65,7 @@ def between_markers(text: str, begin: str, end: str) -> str:
     
 <div class="question-answer">
     <div class="question">
-        Вы могли бы объяснить это подробнее на примере левого маркера?
+        Вы могли бы объяснить это подробнее?
     </div>
     <div class="answer">
         Конечно.
@@ -74,46 +74,18 @@ def between_markers(text: str, begin: str, end: str) -> str:
     if begin in text:
         begin_index = text.find(begin) + len(begin)
     else:
-        begin_index = 0</pre>
-        Сперва мы проверяем, есть ли левый маркер в тексте. Если его там нет - то ответ будет начинаться с самого начала 
-        исходной строки. Если он там есть, то ответ будет начинаться с символа, следующего за последним символом маркера.
-    </div>
-</div>
-
-<div class="question-answer">
-    <div class="question">
-        А что делать с правым маркером?
-    </div>
-    <div class="answer">
-        Ситуация аналогичная, только в случае, если правого маркера нет в исходном тексте - за конец строки мы принимаем
-        конец исходного текста. Вот так:
-        <pre class="brush: python">
-if end in text:
-    end_index = text.find(end)
-else:
-    end_index = len(text)</pre>
-    </div>
-</div>
-
-<div class="question-answer">
-    <div class="question">
-        Как объединить это вместе?
-    </div>
-    <div class="answer">
-        Полный код может выглядеть так:
-        <pre class="brush: python">
-def between_markers(text: str, begin: str, end: str) -> str:
-    if begin in text:
-        begin_index = text.find(begin) + len(begin)
-    else:
         begin_index = 0
-    
+        
     if end in text:
         end_index = text.find(end)
     else:
         end_index = len(text)
         
     return text[begin_index:end_index]</pre>
+        Сперва мы проверяем, есть ли левый маркер в тексте. Если его там нет - то ответ будет начинаться с самого начала 
+        исходной строки. Если он там есть, то ответ будет начинаться с символа, следующего за последним символом маркера.
+        Затем мы проверяем наличие в строке правого маркера. Если он там есть - мы ограничиваем по нему нашу исходную строку.
+        Если правого маркера нет в исходном тексте - ограничителем нашего ответа будет конец исходного текста.
     </div>
 </div>
     
