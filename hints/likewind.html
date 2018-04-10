@@ -1,0 +1,92 @@
+<body data-author="likewind">
+
+<div class="question-answer">
+    <div class="question">
+        I don't know how to approach this task.
+    </div>
+    <div class="answer">
+        You need to find the index of the left limiting marker (if there is one), the right  limiting marker (again - if there is one in a string),
+        and return the text between them.
+    </div>
+</div>
+
+<div class="question-answer">
+    <div class="question">
+        How can I find the indixes of these markers?
+    </div>
+    <div class="answer">
+        Use the 
+        <a href='https://docs.python.org/3/library/stdtypes.html#str.find'>str.find() method</a>.
+    </div>
+</div>
+
+<div class="question-answer">
+    <div class="question">
+        Could you give an example code?
+    </div>
+    <div class="answer">
+        Sure. But first, note that by using 'find' you'll retrieve the index of the first character of the marker.
+        In order to get the index of the first character of the text between the markers, you need to add the length of the left marker.
+        <pre class="brush: python">
+def between_markers(text: str, begin: str, end: str) -> str:
+    begin_index = text.find(begin) + len(begin)
+    end_index = text.find(end)</pre>        
+    </div>
+</div>    
+
+<div class="question-answer">
+    <div class="question">
+        How to find the text between the markers?
+    </div>
+    <div class="answer">
+        By using a slice:
+        <pre class="brush: python">        
+def between_markers(text: str, begin: str, end: str) -> str:
+    begin_index = text.find(begin) + len(begin)
+    end_index = text.find(end)
+    return text[begin_index:end_index]</pre>
+        begin_index - the index of the first character of the text between the markers. end_index - index of the first character of the right marker.
+        Since when slicing the symbol at the end_index position is not included in the result, we're getting the needed text.
+        In other words, the last character that in fact is a part of our answer is a character at the 'end_index - 1' position, which  
+        is the last character of the text between the markers.
+    </div>
+</div>
+    
+<div class="question-answer">
+    <div class="question">
+        What if one of the markers is missing from the string?
+    </div>
+    <div class="answer">
+        Then you need to start counting from the position 0 (if there is no left marker - begin), or end with the last character
+        of the input text (if there is no right marker - end). In case the input string doesn't contain any markers, 
+        you should return the whole string as the answer. 
+    </div>
+</div>
+    
+<div class="question-answer">
+    <div class="question">
+       Could you explain this in more detail?
+    </div>
+    <div class="answer">
+        Sure.
+        <pre class="brush: python">
+def between_markers(text: str, begin: str, end: str) -> str:
+    if begin in text:
+        begin_index = text.find(begin) + len(begin)
+    else:
+        begin_index = 0
+        
+    if end in text:
+        end_index = text.find(end)
+    else:
+        end_index = len(text)
+        
+    return text[begin_index:end_index]</pre>
+        First of all, we're checking for the left marker in the text. If there isn't one, then the answer will start from the very beginning 
+        of the input string. If there is one, then the answer will start with the character following the last character of the marker.
+        After that we're checking for the right marker in the string. If there is one, we're making it the limit for our input string.
+        If the input text doesn't contain the right marker, then the end of the input text will be the limit of our answer.
+    </div>
+</div>
+    
+</body>
