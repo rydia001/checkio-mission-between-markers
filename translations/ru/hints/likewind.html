@@ -1,0 +1,92 @@
+<body data-author="likewind">
+
+<div class="question-answer">
+    <div class="question">
+        Я не знаю, с какой стороны подступиться к этой задаче.
+    </div>
+    <div class="answer">
+        Вам нужно найти индекс левого ограничивающего маркера (если он есть), правого (опять же - если он есть в строке)
+        и вернуть текст, находящийся между ними.
+    </div>
+</div>
+
+<div class="question-answer">
+    <div class="question">
+        Как мне найти индексы этих маркеров?
+    </div>
+    <div class="answer">
+        Используйте 
+        <a href='https://docs.python.org/3/library/stdtypes.html#str.find'>метод str.find()</a>
+    </div>
+</div>
+
+<div class="question-answer">
+    <div class="question">
+        Вы могли бы привести пример кода?
+    </div>
+    <div class="answer">
+        Конечно. Но сперва, обратите внимание, что с помощью 'find' вы найдете индекс первого символа маркера.
+        Для того, чтобы узнать индекс первого символа самого текста между маркерами, необходимо добавить длину левого маркера.
+        <pre class="brush: python">
+def between_markers(text: str, begin: str, end: str) -> str:
+    begin_index = text.find(begin) + len(begin)
+    end_index = text.find(end)</pre>        
+    </div>
+</div>    
+
+<div class="question-answer">
+    <div class="question">
+        Как получить текст, находящийся между маркерами?
+    </div>
+    <div class="answer">
+        Используя срез (slice):
+        <pre class="brush: python">        
+def between_markers(text: str, begin: str, end: str) -> str:
+    begin_index = text.find(begin) + len(begin)
+    end_index = text.find(end)
+    return text[begin_index:end_index]</pre>
+        begin_index - индекс первого символа текста между маркерами. end_index - индекс первого символа правого маркера.
+        Так как при срезе символ, стоящий на позиции end_index не включается в результат - мы получаем нужный нам текст.
+        Другими словами, последний символ, который фактически входит в наш ответ - символ на позиции 'end_index - 1', что 
+        как раз является последним символом текста между маркерами.
+    </div>
+</div>
+    
+<div class="question-answer">
+    <div class="question">
+        Что делать, если какого-то маркера нет в строке?
+    </div>
+    <div class="answer">
+        Тогда вам необходимо начать отсчет с 0-й позиции (если нет левого маркера - begin) или закончить последним символом
+        исходного текста (если нет правого маркера - end). В случае, если в исходной строке нет ни одного из маркеров - 
+        вы должны вернуть в качестве ответа всю строку.
+    </div>
+</div>
+    
+<div class="question-answer">
+    <div class="question">
+        Вы могли бы объяснить это подробнее?
+    </div>
+    <div class="answer">
+        Конечно.
+        <pre class="brush: python">
+def between_markers(text: str, begin: str, end: str) -> str:
+    if begin in text:
+        begin_index = text.find(begin) + len(begin)
+    else:
+        begin_index = 0
+        
+    if end in text:
+        end_index = text.find(end)
+    else:
+        end_index = len(text)
+        
+    return text[begin_index:end_index]</pre>
+        Сперва мы проверяем, есть ли левый маркер в тексте. Если его там нет - то ответ будет начинаться с самого начала 
+        исходной строки. Если он там есть, то ответ будет начинаться с символа, следующего за последним символом маркера.
+        Затем мы проверяем наличие в строке правого маркера. Если он там есть - мы ограничиваем по нему нашу исходную строку.
+        Если правого маркера нет в исходном тексте - ограничителем нашего ответа будет конец исходного текста.
+    </div>
+</div>
+    
+</body>
