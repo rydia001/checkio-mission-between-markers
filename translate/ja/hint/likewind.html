@@ -1,0 +1,90 @@
+<body data-author="likewind">
+
+<div class="question-answer">
+    <div class="question">
+        どうすればいいかわかりません。
+    </div>
+    <div class="answer">
+        まず左端のマーカーを（あれば）見つけ、右端のマーカーを（同じく、あれば）見つけ、
+        そしてその間の文字列を返します。
+    </div>
+</div>
+
+<div class="question-answer">
+    <div class="question">
+        どうやってマーカーのインデックスを探せばいいですか？
+    </div>
+    <div class="answer">
+        <a href='https://docs.python.org/3/library/stdtypes.html#str.find'>str.find() </a>メソッドが使えます。
+    </div>
+</div>
+
+<div class="question-answer">
+    <div class="question">
+        コードのヒントを頂けますか？
+    </div>
+    <div class="answer">
+        どうぞ。注意するのは、 'find' メソッドではマーカーの最初のインデックスが得られることです。
+        マーカーの間の文字列の最初の文字のインデックスを得るには、左のマーカーの文字数を足す必要があります。
+        <pre class="brush: python">
+def between_markers(text: str, begin: str, end: str) -> str:
+    begin_index = text.find(begin) + len(begin)
+    end_index = text.find(end)</pre>        
+    </div>
+</div>    
+
+<div class="question-answer">
+    <div class="question">
+        マーカーの間の文字列はどうすれば取得できますか？
+    </div>
+    <div class="answer">
+        スライスを使います:
+        <pre class="brush: python">        
+def between_markers(text: str, begin: str, end: str) -> str:
+    begin_index = text.find(begin) + len(begin)
+    end_index = text.find(end)
+    return text[begin_index:end_index]</pre>
+        begin_index - マーカーの間の文字列の最初の文字のインデックス。 end_index - 右側のマーカーの最初の文字のインデックス。
+        スライスの最後の値、 end_index のインデックスはスライスされた文字列に含まれません。
+        言い換えれば、答えになる文字列の最後の文字のインデックスは 'end_index - 1' で、これがマーカーの間の最後の文字です。
+    </div>
+</div>
+    
+<div class="question-answer">
+    <div class="question">
+        マーカーがないときはどうすればいいですか？
+    </div>
+    <div class="answer">
+        マーカーがないときは、インデックス0（開始マーカーがないとき）から、最後のインデックス（終端マーカーがないとき）までです。
+        どちらのマーカーもなければ、文字列全体が答えです。
+    </div>
+</div>
+    
+<div class="question-answer">
+    <div class="question">
+       もう少し具体的にお願いします。
+    </div>
+    <div class="answer">
+        はい。
+        <pre class="brush: python">
+def between_markers(text: str, begin: str, end: str) -> str:
+    if begin in text:
+        begin_index = text.find(begin) + len(begin)
+    else:
+        begin_index = 0
+        
+    if end in text:
+        end_index = text.find(end)
+    else:
+        end_index = len(text)
+        
+    return text[begin_index:end_index]</pre>
+        まず、左のマーカーがあるか調べます。
+        もしあれば、答えはマーカーの最後の文字の次の文字から始まります。もしなければ、答えは入力文字列の一番最初から始まります。
+        次に、右のマーカーがあるか調べます。
+        もしあれば、答えはマーカーの文字の手前までです。もしなければ、答えは入力文字列の最後までです。
+        この間の文字列を返します。
+    </div>
+</div>
+    
+</body>
