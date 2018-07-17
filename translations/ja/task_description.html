@@ -1,0 +1,47 @@
+<p>
+    文字列と二つのマーカー（開始と終端）が与えられます。それらのマーカーの間にある部分文字列を返してください。条件は以下の通りです：
+</p>
+
+<ul>
+	<li>開始マーカーと終端マーカーは必ず異なります。</li>
+	<li>開始マーカーが存在しないときは、文字列の最初が開始地点です。</li>
+	<li>終端マーカーが存在しないときは、文字列の最後が終端です。</li>
+  <li>開始マーカーも終端マーカーも存在しないときは、文字列全体を返します。</li>
+	<li>終端マーカーが開始マーカーより前にあるときは、空文字列を返します。</li>
+</ul>
+
+<p>
+    <strong>入力: </strong> 三つの引数で、すべて文字列。二つ目と三つ目が開始マーカーと終端マーカーを表す。
+</p>
+
+<p>
+    <strong>出力: </strong> 文字列。 
+</p>
+
+
+
+<div class="for_info_only">
+    <p>
+        <strong>例:</strong>
+    </p>
+
+{% if interpreter.slug == "js-node" %}
+<pre class="brush: javascript">betweenMarkers('What is >apple<', '>', '<') == 'apple'
+betweenMarkers('No[/b] hi', '[b]', '[/b]') == 'No'
+</pre>
+{% else %}
+<pre class="brush: python">between_markers('What is >apple<', '>', '<') == 'apple'
+between_markers('No[/b] hi', '[b]', '[/b]') == 'No'
+</pre>
+{% endif %}
+</div>
+
+<p class="for_info_only">
+    <strong>どのように使われるか: </strong>
+    <i>文章のパース</i>
+</p>
+
+<p>
+    <strong>前提条件:</strong>
+    <i>開始マーカーは二つ以上存在しない。終端マーカーは二つ以上存在しない。</i>
+</p>
